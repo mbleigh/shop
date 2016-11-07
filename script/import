@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+DATA_DIR = File.dirname(__FILE__) + '/../data'
+FILES = %w(ladies_outerwear.json ladies_tshirts.json mens_outerwear.json mens_tshirts.json)
+
+item_map = {}
+FILES.each do |f|
+  JSON.parse(File.read(File.join(DATA_DIR, f))).each_with_index do |item, i|
+    item['name'].gsub!(/[^A-Za-z_+-]/, '')
+    item['position'] = i
+    item_map[item['category']] ||= {}
+    item_map[item['category']][item['name']] = item
+  end
+end
+
+File.open('__items.json', 'w') do |f|
+  f.write JSON.dump(item_map)
+end
+
+system "firebase database:set /items __items.json -y"
+
+File.delete '__items.json'
