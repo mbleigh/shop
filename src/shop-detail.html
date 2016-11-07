@@ -142,12 +142,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!--
       shop-category-data provides the item data for a given category and item name.
     -->
-    <shop-category-data
-        id="categoryData"
-        category-name="[[routeData.category]]"
-        item-name="[[routeData.item]]"
-        item="{{item}}"
-        failure="{{failure}}"></shop-category-data>
+    <firebase-document
+        id="categoryItem"
+        path="/items/[[routeData.category]]/[[routeData.item]]"
+        data="{{item}}"></shop-category-data>
 
     <div id="content" hidden$="[[failure]]">
       <shop-image alt="[[item.title]]" src="[[item.largeImage]]"></shop-image>
@@ -276,7 +274,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _tryReconnect: function() {
-        this.$.categoryData.refresh();
+        // this.$.categoryData.refresh();
       },
 
       _offlineChanged: function(offline) {

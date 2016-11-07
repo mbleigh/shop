@@ -8,6 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
@@ -18,6 +19,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+
 <link rel="import" href="shop-category-data.html">
 <!-- Since 'home' is the default route, eagerly load it. -->
 <link rel="import" href="shop-home.html">
@@ -223,6 +226,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <shop-analytics key="UA-39334307-16"></shop-analytics>
+    <firebase-app
+      api-key="AIzaSyAt9E4tqktdpOUNx2thnp4zdL_0ELSEMXg"
+      auth-domain="polymerfireshop.firebaseapp.com"
+      database-url="https://polymerfireshop.firebaseio.com"
+      storage-bucket="polymerfireshop.appspot.com"
+      messaging-sender-id="988003282738"></firebase-app>
     <!--
       app-location and app-route elements provide the state of the URL for the app.
     -->
